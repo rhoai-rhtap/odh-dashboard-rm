@@ -2,16 +2,16 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["config:recommended"],
   "branchPrefix": "renovate/",
-  "baseBranches": ["main", "test-1"],
+  "baseBranches": ["main", "test-1", "test-2"],
   "enabledManagers": ["dockerfile", "tekton"],
   "packageRules": [
     {
       "matchManagers": ["dockerfile"],
-      "matchBaseBranches": ["main"],
+      "matchBaseBranches": ["main", "test-1"],
       "matchUpdateTypes": ["digest"],
       "matchFileNames": ["*Dockerfile.konflux*"],
       "enabled": true,
-      "groupName": "Dockerfile Digest Updates - Main",
+      "groupName": "Dockerfile Digest Updates",
       "branchPrefix": "renovate/docker-main/",
       "semanticCommits": "enabled"
     },
@@ -22,7 +22,7 @@
     },
     {
       "matchManagers": ["tekton"],
-      "matchBaseBranches": ["test-1"],
+      "matchBaseBranches": ["test-1", "test-2"],
       "matchUpdateTypes": ["digest"],
       "enabled": true,
       "groupName": "Tekton Updates - test-1",
